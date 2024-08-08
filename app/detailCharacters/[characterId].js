@@ -5,7 +5,7 @@ import { BackIcon, HomeIcon } from "../../components/Icons";
 import { View, ActivityIndicator, Dimensions } from "react-native";
 import { getTransformations } from "../../lib/dragonballapi";
 import { FlatList } from "react-native";
-import Transformation from "../../components/Transformation";
+import { AnimatedTransformation } from "../../components/Transformation";
 
 const { width } = Dimensions.get("window");
 
@@ -55,7 +55,7 @@ export default function Transformations() {
             keyExtractor={(transformation) => transformation.id}
             renderItem={({ item }) => (
               <View className="justify-center items-center" style={{ width }}>
-                <Transformation {...item} />
+                <AnimatedTransformation transformation={item} />
               </View>
             )}
             horizontal

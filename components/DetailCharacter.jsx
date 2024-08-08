@@ -28,16 +28,24 @@ export default function DetailCharacter(props) {
         <View className="justify-between flex-row gap-8 mt-0 mb-24">
           <Link href={`detailCharacters/${id}`}>
             <Text
-              style={{ backgroundColor: "#FFA500" }}
-              className="text-center text-white text-2xl"
+              style={{
+                backgroundColor: "#FFA500",
+                color: "#191970",
+                fontStyle: "bold",
+              }}
+              className="text-center text-2xl"
             >
               Transformaciones
             </Text>
           </Link>
           <Link href="/">
             <Text
-              style={{ backgroundColor: "#FFA500" }}
-              className="text-center text-white text-2xl"
+              style={{
+                backgroundColor: "#FFA500",
+                color: "#191970",
+                fontStyle: "bold",
+              }}
+              className="text-center text-2xl"
             >
               Planeta
             </Text>

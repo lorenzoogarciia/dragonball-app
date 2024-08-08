@@ -1,10 +1,22 @@
 import { styled } from "nativewind";
 import { useEffect, useRef, useState } from "react";
-import { Animated, Text, View, Image, Pressable } from "react-native";
-import { ActivityIndicator } from "react-native";
+import {
+  Animated,
+  Text,
+  View,
+  Image,
+  Pressable,
+  ActivityIndicator,
+  Easing,
+} from "react-native";
 import { Link } from "expo-router";
 
-export default function Planet({ planet }) {
+export default function Planet({
+  planet,
+  handlePressIn,
+  handlePressOut,
+  handlePressCancel,
+}) {
   const StyledPressable = styled(Pressable);
   const [loading, setLoading] = useState(true);
 
@@ -15,6 +27,9 @@ export default function Planet({ planet }) {
   return (
     <Link asChild href={`detailPlanets/${planet.id}`}>
       <StyledPressable
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
+        onPressCancel={handlePressCancel}
         style={{ backgroundColor: "#FFA500" }}
         className="active:opacity-60 active:border-white/50 border-black rounded-xl mt-10"
       >
@@ -42,6 +57,7 @@ export default function Planet({ planet }) {
 
 export function AnimatedPlanet({ planet, index }) {
   const opacity = useRef(new Animated.Value(0)).current;
+  const scaleValue = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     Animated.timing(opacity, {
@@ -52,9 +68,43 @@ export function AnimatedPlanet({ planet, index }) {
     }).start();
   }, [opacity, index]);
 
+  const handlePressIn = () => {
+    Animated.timing(scaleValue, {
+      toValue: 1.2,
+      duration: 500,
+      easing: Easing.bounce,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressOut = () => {
+    Animated.timing(scaleValue, {
+      toValue: 1,
+      duration: 500,
+      easing: Easing.bounce,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handlePressCancel = () => {
+    Animated.timing(scaleValue, {
+      toValue: 1,
+      duration: 500,
+      easing: Easing.bounce,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <Animated.View style={{ opacity }}>
-      <Planet planet={planet} />
+    <Animated.View
+      style={{ opacity, transform: [{ scale: scaleValue }], margin: 10 }}
+    >
+      <Planet
+        planet={planet}
+        handlePressIn={handlePressIn}
+        handlePressOut={handlePressOut}
+        handlePressCancel={handlePressCancel}
+      />
     </Animated.View>
   );
 }

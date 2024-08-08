@@ -29,7 +29,10 @@ export default function Planets() {
           data={planet}
           keyExtractor={(planet) => planet.id}
           renderItem={({ item, index }) => (
-            <View style={{ width }}>
+            <View
+              className="justify-center items-center mb-10"
+              style={{ width }}
+            >
               <AnimatedPlanet planet={item} index={index} />
             </View>
           )}
