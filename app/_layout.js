@@ -7,8 +7,7 @@ export default function Layout() {
     <View className="flex-1">
       <Stack
         screenOptions={{
-          headerStyle: { backgroundColor: "#ffa500" },
-          headerTintColor: "black",
+          headerStyle: { backgroundColor: "#FFA500" },
           headerTitle: () => <Logo />,
           headerTitleAlign: "center",
         }}

@@ -15,7 +15,6 @@ export default function Transformation({
   transformation,
   handlePressIn,
   handlePressOut,
-  handlePressCancel,
 }) {
   const StyledPressable = styled(Pressable);
   const [loading, setLoading] = useState(true);
@@ -28,9 +27,8 @@ export default function Transformation({
     <StyledPressable
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
-      onPressCancel={handlePressCancel}
       style={{ backgroundColor: "#FFA500" }}
-      className="rounded-xl p-4 border-black"
+      className="rounded-xl p-4 border-blac active:opacity-60"
     >
       <View className="items-center justify-center">
         {loading && <ActivityIndicator color="black" size="large" />}
@@ -64,30 +62,18 @@ export function AnimatedTransformation({ transformation }) {
   const scaleValue = useRef(new Animated.Value(1)).current;
 
   const handlePressIn = () => {
-    console.log("press in");
     Animated.timing(scaleValue, {
-      toValue: 1.2,
-      duration: 500,
+      toValue: 0.9,
+      duration: 100,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
   };
 
   const handlePressOut = () => {
-    console.log("press out");
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 500,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressCancel = () => {
-    console.log("press cancel");
-    Animated.timing(scaleValue, {
-      toValue: 1,
-      duration: 500,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -99,7 +85,6 @@ export function AnimatedTransformation({ transformation }) {
         transformation={transformation}
         handlePressIn={handlePressIn}
         handlePressOut={handlePressOut}
-        handlePressCancel={handlePressCancel}
       />
     </Animated.View>
   );
@@ -109,6 +94,5 @@ const styles = StyleSheet.create({
   image: {
     width: 280,
     height: 540,
-    borderRadius: 10,
   },
 });

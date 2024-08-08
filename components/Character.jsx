@@ -8,7 +8,6 @@ export default function Character({
   character,
   handlePressIn,
   handlePressOut,
-  handlePressCancel,
 }) {
   const StyledPressable = styled(Pressable);
   const [loading, setLoading] = useState(true);
@@ -22,9 +21,8 @@ export default function Character({
       <StyledPressable
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        onPressCancel={handlePressCancel}
         style={{ backgroundColor: "#FFA500" }}
-        className="rounded-xl mt-16 p-4"
+        className="rounded-xl mt-16 p-4 active:opacity-80"
       >
         <View style={{ alignItems: "center" }}>
           {loading && <ActivityIndicator color="black" size="large" />}
@@ -68,8 +66,8 @@ export function AnimatedCharacter({ character, index }) {
 
   const handlePressIn = () => {
     Animated.timing(scaleValue, {
-      toValue: 1.1,
-      duration: 200,
+      toValue: 0.9,
+      duration: 100,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -78,16 +76,7 @@ export function AnimatedCharacter({ character, index }) {
   const handlePressOut = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 200,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressCancel = () => {
-    Animated.timing(scaleValue, {
-      toValue: 1,
-      duration: 200,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -101,7 +90,6 @@ export function AnimatedCharacter({ character, index }) {
         character={character}
         handlePressIn={handlePressIn}
         handlePressOut={handlePressOut}
-        handlePressCancel={handlePressCancel}
       />
     </Animated.View>
   );

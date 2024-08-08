@@ -11,12 +11,7 @@ import {
 } from "react-native";
 import { Link } from "expo-router";
 
-export default function Planet({
-  planet,
-  handlePressIn,
-  handlePressOut,
-  handlePressCancel,
-}) {
+export default function Planet({ planet, handlePressIn, handlePressOut }) {
   const StyledPressable = styled(Pressable);
   const [loading, setLoading] = useState(true);
 
@@ -29,9 +24,8 @@ export default function Planet({
       <StyledPressable
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
-        onPressCancel={handlePressCancel}
         style={{ backgroundColor: "#FFA500" }}
-        className="active:opacity-60 active:border-white/50 border-black rounded-xl mt-10"
+        className="active:opacity-80 active:border-white/50 border-black rounded-xl mt-10"
       >
         <View style={{ alignItems: "center" }}>
           {loading && <ActivityIndicator color="black" size="large" />}
@@ -70,23 +64,14 @@ export function AnimatedPlanet({ planet, index }) {
 
   const handlePressIn = () => {
     Animated.timing(scaleValue, {
-      toValue: 1.1,
-      duration: 300,
+      toValue: 0.9,
+      duration: 100,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
   };
 
   const handlePressOut = () => {
-    Animated.timing(scaleValue, {
-      toValue: 1,
-      duration: 300,
-      easing: Easing.bounce,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressCancel = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
       duration: 300,
@@ -103,7 +88,6 @@ export function AnimatedPlanet({ planet, index }) {
         planet={planet}
         handlePressIn={handlePressIn}
         handlePressOut={handlePressOut}
-        handlePressCancel={handlePressCancel}
       />
     </Animated.View>
   );

@@ -28,7 +28,7 @@ export default function PlanetCharacter({
     <Link asChild href={`../../${character.id}`}>
       <StyledPressable
         style={{ backgroundColor: "#FFA500" }}
-        className="rounded-xl p-4"
+        className="rounded-xl p-4 active:opacity-60"
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
@@ -55,8 +55,8 @@ export function AnimatedPlanetCharacter(character) {
 
   const handlePressIn = () => {
     Animated.timing(scaleValue, {
-      toValue: 0.95,
-      duration: 300,
+      toValue: 0.9,
+      duration: 100,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -65,7 +65,7 @@ export function AnimatedPlanetCharacter(character) {
   const handlePressOut = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 1000,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
