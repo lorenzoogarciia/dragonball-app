@@ -34,10 +34,10 @@ export default function CharacterDetails() {
         }}
       />
       <View>
-        {character === 0 ? (
+        {character === null ? (
           <ActivityIndicator color="#fff" size="large" />
         ) : (
-          <DetailCharacter {...character} />
+          <DetailCharacter {...character} id={id} />
         )}
       </View>
     </Screen>

@@ -16,7 +16,7 @@ export default function Character({ character }) {
     <Link asChild href={`/${character.id}`}>
       <StyledPressable
         style={{ backgroundColor: "#FFA500" }}
-        className="active:opacity-60 active:border-white/50 border-black rounded-xl mt-10"
+        className="active:opacity-60 active:border-white/50 border-black rounded-xl mt-16 p-4"
       >
         <View style={{ alignItems: "center" }}>
           {loading && <ActivityIndicator color="black" size="large" />}
@@ -30,12 +30,14 @@ export default function Character({ character }) {
             onLoad={handleLoad}
           />
           {!loading && (
-            <Text
-              style={{ color: "#191970" }}
-              className="font-bold mb-4 mt-1 text-4xl"
-            >
-              {character.name}
-            </Text>
+            <View className="flex-shrink">
+              <Text
+                style={{ color: "#191970" }}
+                className="font-bold mb-4 mt-1 text-4xl"
+              >
+                {character.name}
+              </Text>
+            </View>
           )}
         </View>
       </StyledPressable>

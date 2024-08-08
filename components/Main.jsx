@@ -29,7 +29,10 @@ export function Main() {
           data={characters}
           keyExtractor={(character) => character.id}
           renderItem={({ item, index }) => (
-            <View className="mb-15" style={{ width }}>
+            <View
+              className="justify-center items-center mb-16"
+              style={{ width }}
+            >
               <AnimatedCharacter character={item} index={index} />
             </View>
           )}

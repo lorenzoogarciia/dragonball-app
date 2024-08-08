@@ -13,7 +13,7 @@ export default function Planet({ planet }) {
   };
 
   return (
-    <Link asChild href={`planets/${planet.id}`}>
+    <Link asChild href={`detailPlanets/${planet.id}`}>
       <StyledPressable
         style={{ backgroundColor: "#FFA500" }}
         className="active:opacity-60 active:border-white/50 border-black rounded-xl mt-10"
