@@ -70,8 +70,8 @@ export function AnimatedPlanet({ planet, index }) {
 
   const handlePressIn = () => {
     Animated.timing(scaleValue, {
-      toValue: 1.2,
-      duration: 500,
+      toValue: 1.1,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -80,7 +80,7 @@ export function AnimatedPlanet({ planet, index }) {
   const handlePressOut = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 500,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
@@ -89,7 +89,7 @@ export function AnimatedPlanet({ planet, index }) {
   const handlePressCancel = () => {
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 500,
+      duration: 300,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();

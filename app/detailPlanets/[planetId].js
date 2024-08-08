@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ActivityIndicator } from "react-native";
 import { getPlanetById } from "../../lib/dragonballapi";
 import { Screen } from "../../components/Screen";
-import { BackIcon } from "../../components/Icons";
+import { BackIcon, HomeIcon } from "../../components/Icons";
 import { DetailPlanet } from "../../components/DetailPlanet";
 
 export default function PlanetDetails() {
@@ -28,6 +28,13 @@ export default function PlanetDetails() {
             return (
               <Link href="/planetindex">
                 <BackIcon />
+              </Link>
+            );
+          },
+          headerRight: () => {
+            return (
+              <Link href="/">
+                <HomeIcon />
               </Link>
             );
           },

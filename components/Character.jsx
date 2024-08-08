@@ -20,14 +20,8 @@ export default function Character({
   return (
     <Link asChild href={`/${character.id}`}>
       <StyledPressable
-        onPressIn={(e) => {
-          console.log("press in");
-          handlePressIn(e);
-        }}
-        onPressOut={(e) => {
-          console.log("press out");
-          handlePressOut(e);
-        }}
+        onPressIn={handlePressIn}
+        onPressOut={handlePressOut}
         onPressCancel={handlePressCancel}
         style={{ backgroundColor: "#FFA500" }}
         className="rounded-xl mt-16 p-4"
@@ -73,30 +67,27 @@ export function AnimatedCharacter({ character, index }) {
   }, [opacity, index]);
 
   const handlePressIn = () => {
-    //console.log("press in");
     Animated.timing(scaleValue, {
-      toValue: 1.2,
-      duration: 500,
+      toValue: 1.1,
+      duration: 200,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
   };
 
   const handlePressOut = () => {
-    //console.log("press out");
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 500,
+      duration: 200,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();
   };
 
   const handlePressCancel = () => {
-    //console.log("press cancel");
     Animated.timing(scaleValue, {
       toValue: 1,
-      duration: 500,
+      duration: 200,
       easing: Easing.bounce,
       useNativeDriver: true,
     }).start();

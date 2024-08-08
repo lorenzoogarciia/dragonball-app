@@ -1,8 +1,10 @@
-import { ScrollView, View, Text, Image } from "react-native";
+import { ScrollView, View, Text, Image, Pressable } from "react-native";
 import { Link } from "expo-router";
+import { styled } from "nativewind";
 
 export default function DetailCharacter(props) {
   const { id, ...character } = props;
+  const StyledPressable = styled(Pressable);
   return (
     <ScrollView>
       <View className="justify-center items-center mt-4 p-2 flex-shrink">
@@ -25,30 +27,38 @@ export default function DetailCharacter(props) {
         <Text className="text-white mt-3 text-lg text-center flex-shrink-0">
           {character.description}
         </Text>
-        <View className="justify-between flex-row gap-8 mt-0 mb-24">
-          <Link href={`detailCharacters/${id}`}>
-            <Text
-              style={{
-                backgroundColor: "#FFA500",
-                color: "#191970",
-                fontStyle: "bold",
-              }}
-              className="text-center text-2xl"
+        <View className="flex-row mt-8 mb-8">
+          <Link asChild href={`detailCharacters/${id}`}>
+            <StyledPressable
+              style={{ backgroundColor: "#FFA500" }}
+              className="rounded-3xl p-3 mr-2"
             >
-              Transformaciones
-            </Text>
+              <Text
+                style={{
+                  color: "#191970",
+                  fontWeight: "bold",
+                }}
+                className="text-center text-2xl"
+              >
+                Transformaciones
+              </Text>
+            </StyledPressable>
           </Link>
-          <Link href="/">
-            <Text
-              style={{
-                backgroundColor: "#FFA500",
-                color: "#191970",
-                fontStyle: "bold",
-              }}
-              className="text-center text-2xl"
+          <Link asChild href={`detailPlanets/${character.originPlanet}`}>
+            <StyledPressable
+              className="rounded-3xl p-3 ml-2"
+              style={{ backgroundColor: "#FFA500" }}
             >
-              Planeta
-            </Text>
+              <Text
+                style={{
+                  color: "#191970",
+                  fontWeight: "bold",
+                }}
+                className="text-center text-2xl"
+              >
+                Planeta
+              </Text>
+            </StyledPressable>
           </Link>
         </View>
       </View>

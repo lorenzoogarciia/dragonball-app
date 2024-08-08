@@ -2,7 +2,7 @@ import { Stack, useLocalSearchParams, Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { Screen } from "../../components/Screen";
 import { BackIcon, HomeIcon } from "../../components/Icons";
-import { View, ActivityIndicator, Dimensions } from "react-native";
+import { View, Image, Dimensions, Text } from "react-native";
 import { getTransformations } from "../../lib/dragonballapi";
 import { FlatList } from "react-native";
 import { AnimatedTransformation } from "../../components/Transformation";
@@ -43,12 +43,17 @@ export default function Transformations() {
         }}
       />
       <View>
-        {transformation === null ? (
-          <ActivityIndicator
-            color="#000"
-            size="large"
-            className="justify-center items-center"
-          />
+        {transformation.length === 0 ? (
+          <View className="items-center justify-center p-2">
+            <Image
+              source={require("../../assets/goku-songoku.gif")}
+              style={{ width: 280, height: 300 }}
+              resizeMode="contain"
+            />
+            <Text style={{ color: "#FFA500" }} className="text-lg font-bold">
+              Este personaje no tiene transformaciones
+            </Text>
+          </View>
         ) : (
           <FlatList
             data={transformation}

@@ -10,6 +10,7 @@ export default function Layout() {
           headerStyle: { backgroundColor: "#ffa500" },
           headerTintColor: "black",
           headerTitle: () => <Logo />,
+          headerTitleAlign: "center",
         }}
       />
     </View>

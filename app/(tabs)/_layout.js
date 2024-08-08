@@ -15,6 +15,7 @@ export default function TabsLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          tabBarActiveTintColor: "#191970",
         }}
       />
 
@@ -23,6 +24,7 @@ export default function TabsLayout() {
         options={{
           title: "Planets",
           tabBarIcon: ({ color }) => <PlanetIcon color={color} />,
+          tabBarActiveTintColor: "#191970",
         }}
       />
     </Tabs>
