@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import { useLocalSearchParams, Stack, Link } from "expo-router";
+import { TouchableOpacity, View } from "react-native";
+import { useLocalSearchParams, Stack, Link, router } from "expo-router";
 import { useState, useEffect } from "react";
 import { ActivityIndicator } from "react-native";
 import { getPlanetById } from "../../lib/dragonballapi";
@@ -26,9 +26,9 @@ export default function PlanetDetails() {
           headerTitle: "Detalles del planeta",
           headerLeft: () => {
             return (
-              <Link href="/planetindex">
+              <TouchableOpacity onPress={() => router.back()}>
                 <BackIcon />
-              </Link>
+              </TouchableOpacity>
             );
           },
           headerRight: () => {

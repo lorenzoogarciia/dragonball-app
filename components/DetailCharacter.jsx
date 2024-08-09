@@ -7,7 +7,7 @@ export default function DetailCharacter(props) {
   const StyledPressable = styled(Pressable);
   return (
     <ScrollView>
-      <View className="justify-center items-center mt-4 p-2 flex-shrink">
+      <View className="justify-center items-center">
         <Text className="text-yellow-400 font-bold mt-1 mb-3 text-4xl text-center">
           {character.name}
         </Text>

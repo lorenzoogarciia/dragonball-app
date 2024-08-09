@@ -1,5 +1,5 @@
-import { View } from "react-native";
-import { useLocalSearchParams, Stack, Link } from "expo-router";
+import { TouchableOpacity, View } from "react-native";
+import { useLocalSearchParams, Stack, router } from "expo-router";
 import { Screen } from "../components/Screen";
 import { useState, useEffect } from "react";
 import { ActivityIndicator } from "react-native";
@@ -25,9 +25,9 @@ export default function CharacterDetails() {
           headerTintColor: "#black",
           headerLeft: () => {
             return (
-              <Link href="/">
+              <TouchableOpacity onPress={() => router.back()}>
                 <BackIcon />
-              </Link>
+              </TouchableOpacity>
             );
           },
           headerTitle: "Detalles del personaje",

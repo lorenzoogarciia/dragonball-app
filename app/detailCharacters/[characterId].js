@@ -1,8 +1,8 @@
-import { Stack, useLocalSearchParams, Link } from "expo-router";
+import { Stack, useLocalSearchParams, Link, router } from "expo-router";
 import { useEffect, useState } from "react";
 import { Screen } from "../../components/Screen";
 import { BackIcon, HomeIcon } from "../../components/Icons";
-import { View, Image, Dimensions, Text } from "react-native";
+import { View, Image, Dimensions, Text, TouchableOpacity } from "react-native";
 import { getTransformations } from "../../lib/dragonballapi";
 import { FlatList } from "react-native";
 import { AnimatedTransformation } from "../../components/Transformation";
@@ -28,9 +28,9 @@ export default function Transformations() {
           headerTitle: "Transformaciones",
           headerLeft: () => {
             return (
-              <Link href={`../${characterId}`}>
+              <TouchableOpacity onPress={() => router.back()}>
                 <BackIcon />
-              </Link>
+              </TouchableOpacity>
             );
           },
           headerRight: () => {

@@ -28,7 +28,7 @@ export default function Transformation({
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       style={{ backgroundColor: "#FFA500" }}
-      className="rounded-xl p-4 border-blac active:opacity-60"
+      className="rounded-xl p-4 border-black active:opacity-60"
     >
       <View className="items-center justify-center">
         {loading && <ActivityIndicator color="black" size="large" />}
@@ -41,15 +41,12 @@ export default function Transformation({
         />
         <View className="flex-shrink items-center justify-center">
           <Text
-            className="mb-3 mt-0 text-3xl font-bold"
+            className="mb-2 text-3xl font-bold"
             style={{ color: "#191970" }}
           >
             {transformation.name}
           </Text>
-          <Text
-            className="mt-2 text-3xl font-bold"
-            style={{ color: "#191970" }}
-          >
+          <Text className="text-3xl font-bold" style={{ color: "#191970" }}>
             Ki: {transformation.ki}
           </Text>
         </View>

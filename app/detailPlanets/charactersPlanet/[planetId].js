@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import { getCharactersPlanet } from "../../../lib/dragonballapi";
 import { Screen } from "../../../components/Screen";
-import { Stack, Link, useLocalSearchParams } from "expo-router";
+import { Stack, Link, useLocalSearchParams, router } from "expo-router";
 import { BackIcon } from "../../../components/Icons";
 import { HomeIcon } from "../../../components/Icons";
-import { ActivityIndicator, View, FlatList, Dimensions } from "react-native";
+import {
+  Image,
+  View,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { AnimatedPlanetCharacter } from "../../../components/PlanetCharacter";
 
 const { width } = Dimensions.get("window");
@@ -27,9 +34,9 @@ export default function CharactersPlanet() {
           headerTitle: "Personajes del planeta",
           headerLeft: () => {
             return (
-              <Link href="../">
+              <TouchableOpacity onPress={() => router.back()}>
                 <BackIcon />
-              </Link>
+              </TouchableOpacity>
             );
           },
           headerRight: () => {
@@ -43,7 +50,16 @@ export default function CharactersPlanet() {
       />
       <View className="items-center justify-center">
         {characters.length === 0 ? (
-          <ActivityIndicator color="#000" size="large" />
+          <View>
+            <Image
+              source={require("../../../assets/goku-songoku.gif")}
+              style={{ width: 280, height: 300 }}
+              resizeMode="contain"
+            />
+            <Text style={{ color: "#FFA500" }} className="text-lg font-bold">
+              Este planeta no tiene personajes
+            </Text>
+          </View>
         ) : (
           <FlatList
             data={characters}
