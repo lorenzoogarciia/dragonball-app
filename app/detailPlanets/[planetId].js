@@ -8,9 +8,12 @@ import { BackIcon, HomeIcon } from "../../components/Icons";
 import { DetailPlanet } from "../../components/DetailPlanet";
 
 export default function PlanetDetails() {
+  //Variable que recibe el id del planeta
   const { planetId } = useLocalSearchParams();
+  //Variable que guarda la información del planeta
   const [planet, setPlanet] = useState([]);
 
+  //Función que obtiene el planeta por su id y lo guarda en la variable planet
   useEffect(() => {
     if (planetId) {
       getPlanetById(planetId).then(setPlanet);
@@ -19,6 +22,7 @@ export default function PlanetDetails() {
 
   return (
     <Screen>
+      {/*Estilo para el header de la página*/}
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: "#FFA500" },
@@ -41,6 +45,8 @@ export default function PlanetDetails() {
         }}
       />
       <View>
+        {/*Si el planeta es null, se muestra un ActivityIndicator, 
+        de lo contrario se muestra la información del planeta*/}
         {planet === null ? (
           <ActivityIndicator color="#000" size="large" />
         ) : (

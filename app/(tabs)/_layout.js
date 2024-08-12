@@ -1,6 +1,7 @@
 import { Tabs } from "expo-router";
-import { HomeIcon, PlanetIcon } from "../../components/Icons";
+import { PeopleIcon, PlanetIcon } from "../../components/Icons";
 
+//Layout para la navegación por pestañas
 export default function TabsLayout() {
   return (
     <Tabs
@@ -13,8 +14,8 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+          title: "Personajes",
+          tabBarIcon: ({ color }) => <PeopleIcon color={color} />,
           tabBarActiveTintColor: "#191970",
         }}
       />
@@ -22,7 +23,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="planetindex"
         options={{
-          title: "Planets",
+          title: "Planetas",
           tabBarIcon: ({ color }) => <PlanetIcon color={color} />,
           tabBarActiveTintColor: "#191970",
         }}

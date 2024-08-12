@@ -5,21 +5,23 @@ import { Link } from "expo-router";
 export function DetailPlanet(planet) {
   const StyledPressable = styled(Pressable);
   return (
+    //Estilo del contenedor de la información del planeta
     <ScrollView>
       <View className="justify-center items-center mt-4 p-2 flex-shrink">
-        <Text className="text-yellow-400 font-bold text-4xl text-center">
+        <Text className="font-bold text-4xl text-center text-yellow-500">
           {planet.name}
         </Text>
         <Image
           source={{ uri: planet.image }}
-          style={{ width: 200, height: 300 }}
+          style={{ width: 280, height: 400 }}
           resizeMode="contain"
         />
         <View className="flex-row gap-1">
-          <Text className="text-white text-center text-lg mt-3">
+          <Text className="text-white text-center text-lg">
             {planet.description}
           </Text>
         </View>
+        {/*Botón que dirige hacia la página de personajes del planeta*/}
         <Link asChild href={`./charactersPlanet/${planet.id}`}>
           <StyledPressable
             className="rounded-3xl p-2 mt-6"

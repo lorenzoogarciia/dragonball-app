@@ -8,9 +8,12 @@ import { BackIcon } from "../components/Icons";
 import DetailCharacter from "../components/DetailCharacter";
 
 export default function CharacterDetails() {
+  //Variable que recibe el id del personaje
   const { id } = useLocalSearchParams();
+  //Variable que almacena al personaje
   const [character, setCharacter] = useState([]);
 
+  //Función que obtiene el personaje por id y lo guarda en la variable character
   useEffect(() => {
     if (id) {
       getCharacterById(id).then(setCharacter);
@@ -19,6 +22,7 @@ export default function CharacterDetails() {
 
   return (
     <Screen>
+      {/* Header de la pantalla de detalles del personaje */}
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: "#FFA500" },
@@ -34,9 +38,15 @@ export default function CharacterDetails() {
         }}
       />
       <View>
+        {/*Si el personaje es nulo, se muestra un ActivityIndicator*/}
         {character === null ? (
-          <ActivityIndicator color="#fff" size="large" />
+          <ActivityIndicator
+            color="#fff"
+            size="large"
+            style={{ marginTop: 400 }}
+          />
         ) : (
+          //Si el personaje no es nulo, se muestra el componente DetailCharacter
           <DetailCharacter {...character} id={id} />
         )}
       </View>

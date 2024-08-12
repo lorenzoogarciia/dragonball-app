@@ -1,5 +1,6 @@
 import * as React from "react";
 import Svg, { Defs, ClipPath, Path, G } from "react-native-svg";
+//Logo de Dragon Ball para el header
 const Logo = (props) => (
   <Svg
     {...props}

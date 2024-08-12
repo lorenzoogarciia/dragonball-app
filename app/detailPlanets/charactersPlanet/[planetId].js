@@ -16,10 +16,14 @@ import { AnimatedPlanetCharacter } from "../../../components/PlanetCharacter";
 
 const { width } = Dimensions.get("window");
 
+//Página que muestra los personajes asociados a un planeta
 export default function CharactersPlanet() {
+  //Variable que obtiene el id del planeta
   const { planetId } = useLocalSearchParams();
+  //Variable que almacena los personajes asociados al planeta
   const [characters, setCharacters] = useState([]);
 
+  //Función que obtiene los personajes asociados al planeta
   useEffect(() => {
     if (planetId) {
       getCharactersPlanet(planetId).then(setCharacters);
@@ -27,6 +31,7 @@ export default function CharactersPlanet() {
   }, [planetId]);
   return (
     <Screen>
+      {/*Estilo del header de la página*/}
       <Stack.Screen
         options={{
           headerStyle: { backgroundColor: "#FFA500" },
@@ -49,6 +54,8 @@ export default function CharactersPlanet() {
         }}
       />
       <View className="items-center justify-center">
+        {/*Si el planeta no tiene personajes mostramos un gif 
+        y un texto para informar al usuario de este caso*/}
         {characters.length === 0 ? (
           <View>
             <Image
@@ -61,15 +68,17 @@ export default function CharactersPlanet() {
             </Text>
           </View>
         ) : (
+          //Si el planeta tiene personajes mostramos una lista de los mismos
           <FlatList
             data={characters}
             keyExtractor={(characters) => characters.id}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <View
                 style={{ width }}
                 className="items-center justify-center mt-3"
               >
-                <AnimatedPlanetCharacter {...item} />
+                {/*Componente renderizado para cada personaje*/}
+                <AnimatedPlanetCharacter character={item} index={index} />
               </View>
             )}
             horizontal
