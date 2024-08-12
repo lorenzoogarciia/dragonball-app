@@ -27,8 +27,8 @@ export default function Character({
   return (
     //Estilo del contenedor de cada personaje
     <StyledView
-      style={{ backgroundColor: "#FFA500" }}
-      className="rounded-xl p-4 mt-6"
+      style={{ backgroundColor: "#FFA500", overflow: "hidden" }}
+      className="rounded-xl p-4 mt-6 items-center justify-center"
     >
       {/*Link que dirige hacia la página de detalles del personaje*/}
       <Link asChild href={`/${character.id}`}>
@@ -36,14 +36,14 @@ export default function Character({
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
         >
-          <View style={{ justifyContent: "center", marginTop: 4 }}>
+          <View style={{ justifyContent: "center" }}>
             {/*Si la imagen está cargando, se muestra un ActivityIndicator*/}
             {loading && <ActivityIndicator color="black" size="large" />}
             <Image
               source={{ uri: character.image }}
               style={{
-                width: 280,
-                height: 450,
+                width: "85%",
+                aspectRatio: 280 / 420,
               }}
               resizeMode="contain"
               onLoad={handleLoad}
@@ -53,7 +53,7 @@ export default function Character({
               <View>
                 <Text
                   style={{ color: "#191970" }}
-                  className="font-bold text-3xl text-center mt-1 mb-2"
+                  className="font-bold text-3xl text-center mt-1"
                 >
                   {character.name}
                 </Text>

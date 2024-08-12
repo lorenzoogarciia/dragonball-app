@@ -23,8 +23,8 @@ export default function Planet({ planet, handlePressIn, handlePressOut }) {
   return (
     //Estilo del contenedor de cada planeta
     <StyledView
-      className="rounded-xl p-4 mt-6"
-      style={{ backgroundColor: "#FFA500" }}
+      className="rounded-xl p-4 mt-6 items-center justify-center"
+      style={{ backgroundColor: "#FFA500", overflow: "hidden" }}
     >
       {/*Link que dirige hacia la página de detalles del planeta*/}
       <Link asChild href={`detailPlanets/${planet.id}`}>
@@ -32,7 +32,7 @@ export default function Planet({ planet, handlePressIn, handlePressOut }) {
           onPressIn={handlePressIn}
           onPressOut={handlePressOut}
         >
-          <View style={{ justifyContent: "center", marginTop: 4 }}>
+          <View style={{ justifyContent: "center" }}>
             {/*Si la imagen está cargando, se muestra un ActivityIndicator*/}
             {loading && (
               <ActivityIndicator
@@ -44,7 +44,7 @@ export default function Planet({ planet, handlePressIn, handlePressOut }) {
             {/*Se muestra la imagen y ponemos el load como false*/}
             <Image
               source={{ uri: planet.image }}
-              style={{ width: 280, height: 450 }}
+              style={{ width: "85%", aspectRatio: 280 / 420 }}
               resizeMode="contain"
               onLoad={handleLoad}
             />
@@ -52,7 +52,7 @@ export default function Planet({ planet, handlePressIn, handlePressOut }) {
               //Nombre del planeta
               <Text
                 style={{ color: "#191970" }}
-                className="text-3xl font-bold mb-2 mt-1 text-center"
+                className="text-3xl font-bold mt-1 text-center"
               >
                 {planet.name}
               </Text>

@@ -28,7 +28,7 @@ export default function PlanetCharacter({
   return (
     <StyledView
       style={{ backgroundColor: "#FFA500" }}
-      className="rounded-xl p-4"
+      className="rounded-xl p-2 items-center justify-center"
     >
       {/*Todo el componente será un botón que nos lleva a los detalles del personaje*/}
       <Link asChild href={`../../${character.id}`}>
@@ -43,13 +43,15 @@ export default function PlanetCharacter({
             ponemos el loading como false mediante la función */}
             <Image
               source={{ uri: character.image }}
-              style={{ width: 280, height: 500 }}
+              style={{ width: "90%", aspectRatio: 280 / 400 }}
               resizeMode="contain"
               onLoad={handleLoad}
-              className="items-center justify-center"
             />
             {/*Nombre del personaje*/}
-            <Text className="text-3xl font-bold" style={{ color: "#191970" }}>
+            <Text
+              className="text-3xl font-bold mt-1"
+              style={{ color: "#191970" }}
+            >
               {character.name}
             </Text>
           </View>

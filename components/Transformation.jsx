@@ -27,7 +27,7 @@ export default function Transformation({
     //Vista que contiene la carta de la transformación
     <StyledView
       style={{ backgroundColor: "#FFA500" }}
-      className="rounded-xl p-4"
+      className="rounded-xl p-2 items-center justify-center"
     >
       {/*Aunque sea un botón las transformaciones no tienen mas datos
       que los mostrados en este componente, sólo está así para las animaciones*/}
@@ -35,23 +35,19 @@ export default function Transformation({
         onPressIn={handlePressIn}
         onPressOut={handlePressOut}
       >
-        <View className="items-center justify-center">
+        <View>
           {/*Si la imagen no ha cargado mostramos un ActivityIndicator*/}
           {loading && <ActivityIndicator color="black" size="large" />}
           {/*Cuando carga la imagen la mostramos y seteamos el loading a false*/}
           <Image
             source={{ uri: transformation.image }}
-            style={{ width: 280, height: 500 }}
+            style={{ width: "90%", aspectRatio: 280 / 450 }}
             resizeMode="contain"
             onLoad={handleLoad}
-            className="items-center justify-center"
           />
           {/*Textos para el nombre y ki de la transformación*/}
-          <View className="flex-shrink items-center justify-center">
-            <Text
-              className="mb-2 text-3xl font-bold"
-              style={{ color: "#191970" }}
-            >
+          <View className="flex-shrink items-center justify-center mt-1">
+            <Text className="text-3xl font-bold" style={{ color: "#191970" }}>
               {transformation.name}
             </Text>
             <Text className="text-3xl font-bold" style={{ color: "#191970" }}>

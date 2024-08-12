@@ -35,7 +35,7 @@ export function Main() {
           height: 50,
           borderColor: "black",
           borderWidth: 1,
-          width: "80%",
+          width: "85%",
           margin: 10,
           color: "#191970",
           backgroundColor: "#FFA500",
